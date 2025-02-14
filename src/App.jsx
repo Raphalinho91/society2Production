@@ -1,4 +1,5 @@
 import { Suspense, useEffect, useRef, useState } from "react";
+import { Box, Typography, Button } from "@mui/material";
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import gsap from "gsap";
@@ -55,64 +56,131 @@ function App() {
   }, []);
 
   return (
-    <main ref={mainRef} className="overflow-x-hidden">
+    <main ref={mainRef}>
       <Suspense
         fallback={
-          <div className="loading-page">
-            <h1 className="text-white text-8xl font-extrabold uppercase tracking-wide">
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            height="100vh"
+            bgcolor="black"
+          >
+            <Typography
+              variant="h2"
+              color="white"
+              fontWeight="bold"
+              textTransform="uppercase"
+            >
               society2production
-            </h1>
-          </div>
+            </Typography>
+          </Box>
         }
       >
-        <section className="relative grid place-items-center h-[100vh]">
-          <p className="text-white text-center absolute top-[5%] mx-4 w-fit text-8xl font-bold">
+        <Box
+          display="grid"
+          placeItems="center"
+          height="100vh"
+          position="relative"
+        >
+          <Typography
+            variant="h1"
+            color="white"
+            position="absolute"
+            top="5%"
+            mx={4}
+            fontWeight="bold"
+            align="center"
+          >
             society2Production
-          </p>
-          <button
-            className="absolute bottom-[5%] flex items-center justify-center w-16 h-16"
+          </Typography>
+          <Button
+            variant="contained"
+            sx={{
+              position: "absolute",
+              bottom: "5%",
+              width: "64px",
+              height: "64px",
+              borderRadius: "50%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "transparent",
+              "&:hover": {
+                backgroundColor: "transparent",
+              },
+            }}
             onClick={handleScrollToNextSection}
           >
             <span className="mouse">
               <span className="mouse-wheel"></span>
             </span>
-          </button>
+          </Button>
 
-          <div ref={sceneRef} className="h-[100vh] w-[100vw] text-white">
+          <Box ref={sceneRef} height="100vh" width="100vw" color="white">
             <Canvas>
               <Scene progress={progress} />
             </Canvas>
-          </div>
-        </section>
+          </Box>
+        </Box>
 
-        <section
+        <Box
           ref={nextSectionRef}
-          className=" relative flex items-center justify-evenly h-[100vh]"
+          display="flex"
+          justifyContent="space-evenly"
+          alignItems="center"
+          height="100vh"
         >
-          <p className="w-[50%] border-0 border-red-700"></p>
-
-          <p className="text-white w-[50%] text-center px-4 text-4xl font-semibold">
+          <Box width="50%" border={0}></Box>
+          <Typography
+            variant="h4"
+            color="white"
+            align="center"
+            px={4}
+            fontWeight="600"
+          >
             Effortlessly scroll, zoom, and navigate with the re-engineered
             Digital Crown, now more precise than ever.
-          </p>
-        </section>
+          </Typography>
+        </Box>
 
-        <section className=" relative flex items-center justify-evenly h-[100vh]">
-          <p className="text-white order-1 w-[50%] text-center px-4 text-4xl font-semibold">
+        <Box
+          display="flex"
+          justifyContent="space-evenly"
+          alignItems="center"
+          height="100vh"
+        >
+          <Typography
+            variant="h4"
+            color="white"
+            align="center"
+            px={4}
+            fontWeight="600"
+          >
             Built for adventure, the rugged straps are as tough as you are,
             ready for any challenge.
-          </p>
-          <p className="w-[50%] order-2"></p>
-        </section>
+          </Typography>
+          <Box width="50%"></Box>
+        </Box>
 
-        <section className=" relative flex items-center justify-evenly h-[100vh]">
-          <p className="w-[50%] border-0 border-red-700"></p>
-
-          <p className="text-white w-[50%] text-center px-4 text-4xl font-semibold">
+        <Box
+          display="flex"
+          justifyContent="space-evenly"
+          alignItems="center"
+          height="100vh"
+        >
+          <Box width="50%" border={0}></Box>
+          <Typography
+            variant="h4"
+            color="white"
+            align="center"
+            px={4}
+            fontWeight="600"
+          >
             The brightest display ever on an Apple Watch, so you can see it
             clearly even under the harshest sun.
-          </p>
-        </section>
+          </Typography>
+        </Box>
       </Suspense>
     </main>
   );
