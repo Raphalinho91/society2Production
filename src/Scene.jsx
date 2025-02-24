@@ -4,23 +4,30 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Camera } from "./Camera";
 import PropTypes from "prop-types";
 import { useFrame } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Scene = ({ progress }) => {
   const cameraRef = useRef(null);
+  const [isCameraReady, setIsCameraReady] = useState(false);
+
+  useEffect(() => {
+    if (cameraRef.current) {
+      setIsCameraReady(true);
+    }
+  }, []);
 
   useFrame(() => {
-    if (cameraRef.current) {
-      const target = new THREE.Vector3(0, 0, 0);
-      cameraRef.current.lookAt(target);
-    }
+    if (!isCameraReady || !cameraRef.current) return;
+
+    const target = new THREE.Vector3(0, 0, 0);
+    cameraRef.current.lookAt(target);
   });
 
   useEffect(() => {
-    if (!cameraRef.current) return;
+    if (!isCameraReady || !cameraRef.current) return;
 
     const updateCamPos = () => {
       const positions = [
@@ -63,12 +70,17 @@ const Scene = ({ progress }) => {
     };
 
     updateCamPos();
-  }, [progress]);
+  }, [progress, isCameraReady]);
 
   return (
     <>
       <PerspectiveCamera
-        ref={(ref) => (cameraRef.current = ref)}
+        ref={(ref) => {
+          if (ref) {
+            cameraRef.current = ref;
+            setIsCameraReady(true);
+          }
+        }}
         fov={45}
         near={0.1}
         far={1000}

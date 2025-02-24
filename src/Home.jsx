@@ -52,6 +52,7 @@ export default function Home() {
         transform: "translate(-25vw, 300vh)",
       });
   }, []);
+
   return (
     <main ref={mainRef}>
       <Box
@@ -80,17 +81,12 @@ export default function Home() {
         >
           society<span>2</span>production
         </Typography>
-        <Box
-          ref={sceneRef}
-          sx={{
-            width: "100vw",
-            height: "100vh",
-          }}
-        >
+        <Box ref={sceneRef} sx={{ width: "100vw", height: "100vh" }}>
           <Canvas>
             <Scene progress={progress} />
           </Canvas>
         </Box>
+
         <Box
           sx={{
             display: "flex",

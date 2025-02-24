@@ -1,0 +1,39 @@
+.block {
+  height: 450px;
+  width: 300px;
+  margin: 30px;
+  border: 0.5mm solid black;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-in-out;
+  background-size: cover;
+  background-position: center;
+}
+
+.block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.block1 {
+  background-image: url("./assets/photo_jiss.jpeg");
+}
+
+.block2 {
+  background-image: url("./assets/photo_jiss.jpeg");
+}
+
+.block3 {
+  background-image: url("./assets/photo_jiss.jpeg");
+}
+
+.block4 {
+  background-image: url("./assets/photo_jiss.jpeg");
+}
+
+.block5 {
+  background-image: url("./assets/photo_jiss.jpeg");
+}
