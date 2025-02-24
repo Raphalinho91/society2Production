@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  user-select: none;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+:root {
+  background: linear-gradient(135deg, #000000, #0a0a0f);
+}
+
+.box-anim {
+  width: 18vw;
+  height: 18vw;
+  background: #f15726;
+  border-radius: 100%;
+  border: 4vw solid #f15726;
+  border-bottom-color: black;
+  border-left-color: black;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  -webkit-animation: rotate 6s linear infinite;
+  top: 45%;
+  left: 35%;
+  position: absolute;
+  box-shadow: 0 0 0 1.3vw black;
+}
+
+.box-anim::before {
+  content: "";
+  display: block;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: rotate 4s linear infinite reverse;
+  top: 45%;
+  left: 35%;
+  position: absolute;
+  box-shadow: 0 0 0 1.3vw black;
+  width: 12vw;
+  height: 12vw;
+  background: #000000;
+  border-radius: 100%;
+  background: black;
+  border: 4vw solid black;
+  border-bottom-color: #f15726;
+  border-left-color: #f15726;
+}
+
+.box-anim::after {
+  content: "";
+  display: block;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(-180deg);
+  animation: rotate 2s linear infinite reverse;
+  top: 45%;
+  left: 35%;
+  position: absolute;
+  box-shadow: 0 0 0 1.3vw black;
+  width: 6vw;
+  height: 6vw;
+  border-radius: 100%;
+  background: radial-gradient(#f15726 35%, black 35%);
+  border: 3vw solid black;
+  border-bottom-color: #f15726;
+  border-left-color: #f15726;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
